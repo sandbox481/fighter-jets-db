@@ -1,0 +1,18 @@
+[
+  {
+    "name": "F-22 Raptor",
+    "country": "USA",
+    "type": "Fighter",
+    "first_flight": 1997,
+    "status": "Active",
+    "weapons": ["AIM-120 AMRAAM", "AIM-9 Sidewinder", "M61 Vulcan Cannon"]
+  },
+  {
+    "name": "Su-57",
+    "country": "Russia",
+    "type": "Fighter",
+    "first_flight": 2010,
+    "status": "Active",
+    "weapons": ["R-77", "R-73"]
+  }
+]
