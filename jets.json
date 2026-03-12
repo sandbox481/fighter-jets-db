@@ -1,0 +1,106 @@
+const fighterJets = [
+  // 🌍 First operational jets
+  { name:"Messerschmitt Me 262", variant:"A-1a", country:"Germany", first_flight:1942, retired:true, role:"Jet Fighter/Interceptor", speed_mach:0.86, ceiling_m:12500, weapons:["MK108 cannons","R4M rockets"] },
+  { name:"Gloster Meteor", variant:"F.8", country:"UK", first_flight:1943, retired:true, role:"Jet Fighter", speed_mach:0.9, ceiling_m:13000, weapons:[".50 cal MG","20mm cannons"] },
+  { name:"Lockheed P-80 Shooting Star", variant:"F-80C", country:"USA", first_flight:1944, retired:true, role:"Jet Fighter", speed_mach:0.92, ceiling_m:12500, weapons:[".50 cal MG"] },
+
+  // ✈ Korean War Era
+  { name:"Mikoyan-Gurevich MiG-15", variant:"bis", country:"Soviet Union", first_flight:1947, retired:true, role:"Jet Fighter", speed_mach:0.92, ceiling_m:13000, weapons:["23 mm cannons"] },
+  { name:"North American F-86 Sabre", variant:"F-86F", country:"USA", first_flight:1947, retired:true, role:"Jet Fighter", speed_mach:0.93, ceiling_m:13000, weapons:[".50 cal MG"] },
+
+  // 1950s–1960s jets
+  { name:"Mikoyan-Gurevich MiG-17", variant:"F", country:"Soviet Union", first_flight:1950, retired:true, role:"Jet Fighter", speed_mach:0.93, ceiling_m:15000, weapons:["23 mm cannons"] },
+  { name:"F-100 Super Sabre", variant:"F-100D", country:"USA", first_flight:1953, retired:true, role:"Jet Fighter", speed_mach:1.4, ceiling_m:50000, weapons:["Missiles","Cannons"] },
+  { name:"Dassault Mirage III", variant:"C", country:"France", first_flight:1956, retired:true, role:"Interceptor/Fighter", speed_mach:2.2, ceiling_m:17000, weapons:["Magic II missiles"] },
+
+  // Cold War / multirole fighters
+  { name:"McDonnell Douglas F-4 Phantom II", variant:"F-4E", country:"USA", first_flight:1958, retired:true, role:"Interceptor/Fighter-Bomber", speed_mach:2.23, ceiling_m:18000, weapons:["AIM-7 Sparrow","AIM-9 Sidewinder"] },
+  { name:"Mikoyan MiG-21 Fishbed", variant:"bis", country:"Soviet Union", first_flight:1955, retired:true, role:"Interceptor", speed_mach:2.0, ceiling_m:17000, weapons:["K-13 missiles"] },
+  { name:"Northrop F-5 Freedom Fighter", variant:"F-5E Tiger II", country:"USA", first_flight:1959, retired:false, role:"Light Fighter", speed_mach:1.6, ceiling_m:15000, weapons:["AIM-9","Guns"] },
+
+  // 1970s–1980s Cold War heavyweights
+  { name:"Grumman F-14 Tomcat", variant:"F-14A", country:"USA", first_flight:1970, retired:true, role:"Air Superiority", speed_mach:2.34, ceiling_m:18000, weapons:["AIM-54 Phoenix","AIM-9"] },
+  { name:"Mikoyan MiG-27", variant:"M", country:"Soviet Union", first_flight:1970, retired:true, role:"Ground Attack/Fighter", speed_mach:1.86, ceiling_m:14000, weapons:["Kh-23","S-24"] },
+  { name:"Sukhoi Su-27 Flanker", variant:"Su-27S", country:"Russia", first_flight:1977, retired:false, role:"Air Superiority", speed_mach:2.35, ceiling_m:19000, weapons:["R-27","R-73"] },
+  { name:"Mikoyan MiG-29 Fulcrum", variant:"MiG-29S", country:"Russia", first_flight:1977, retired:false, role:"Air Superiority/Multirole", speed_mach:2.25, ceiling_m:18000, weapons:["R-27","R-73"] },
+  { name:"McDonnell Douglas F/A-18 Hornet", variant:"F/A-18C", country:"USA", first_flight:1978, retired:false, role:"Multirole", speed_mach:1.8, ceiling_m:15000, weapons:["AIM-120","AIM-9"] },
+  { name:"General Dynamics F-16 Fighting Falcon", variant:"F-16C", country:"USA", first_flight:1974, retired:false, role:"Multirole", speed_mach:2.0, ceiling_m:15000, weapons:["AIM-120","AIM-9"] },
+  { name:"McDonnell Douglas F-15 Eagle", variant:"F-15C", country:"USA", first_flight:1972, retired:false, role:"Air Superiority", speed_mach:2.5, ceiling_m:20000, weapons:["AIM-120","AIM-9"] },
+
+  // 4.5th Gen & Modern Fighters
+  { name:"Dassault Rafale", variant:"C", country:"France", first_flight:1986, retired:false, role:"Multirole", speed_mach:1.8, ceiling_m:15000, weapons:["MICA","Meteor"] },
+  { name:"Saab JAS-39 Gripen", variant:"C/D", country:"Sweden", first_flight:1988, retired:false, role:"Multirole", speed_mach:2.0, ceiling_m:15000, weapons:["Meteor","IRIS-T"] },
+  { name:"Eurofighter Typhoon", variant:"Tranche 1", country:"EU", first_flight:1994, retired:false, role:"Multirole", speed_mach:2.0, ceiling_m:19000, weapons:["Meteor","IRIS-T"] },
+  { name:"Shenyang J-11", variant:"B", country:"China", first_flight:1990, retired:false, role:"Air Superiority", speed_mach:2.0, ceiling_m:18000, weapons:["PL-10","PL-12"] },
+  { name:"Sukhoi Su-30", variant:"MKI", country:"Russia/Exports", first_flight:1989, retired:false, role:"Multirole", speed_mach:2.0, ceiling_m:17500, weapons:["R-77","Kh-31"] },
+  { name:"Mikoyan MiG-35", variant:"MiG-35", country:"Russia", first_flight:2007, retired:false, role:"Multirole", speed_mach:2.25, ceiling_m:18000, weapons:["R-27","R-73"] },
+
+  // 5th Gen / Stealth Fighters
+  { name:"Chengdu J-20", variant:"J-20A", country:"China", first_flight:2011, retired:false, role:"Stealth Multirole", speed_mach:2.0, ceiling_m:20000, weapons:["PL-15","PL-10"] },
+  { name:"Su-57", variant:"Su-57", country:"Russia", first_flight:2010, retired:false, role:"Stealth Multirole", speed_mach:2.0, ceiling_m:20000, weapons:["R-77","R-73"] },
+  { name:"KAI KF-21 Boramae", variant:"KF-21", country:"South Korea", first_flight:2022, retired:false, role:"Multirole", speed_mach:1.8, ceiling_m:15000, weapons:["AIM-120","AIM-9"] },
+  { name:"HAL Tejas", variant:"Mk1A", country:"India", first_flight:2001, retired:false, role:"Multirole", speed_mach:1.8, ceiling_m:15000, weapons:["Astra","R-73"] },
+  { name:"JF-17 Thunder", variant:"Block III", country:"Pakistan/China", first_flight:2003, retired:false, role:"Multirole", speed_mach:1.6, ceiling_m:15000, weapons:["PL-12","TY-90"] }
+];
+const fighterJets = [
+  // 👇 Earliest & Prototype Jets
+  { name:"Heinkel He 178", country:"Germany", first_flight:1939, retired:true, role:"Prototype", speed_mach:0.75, ceiling_m:10000, weapons:["None"] },
+  { name:"Messerschmitt Me 262", country:"Germany", first_flight:1942, retired:true, role:"Jet Fighter/Interceptor", speed_mach:0.86, ceiling_m:12500, weapons:["MK108","R4M"] },
+  { name:"Gloster Meteor", country:"UK", first_flight:1943, retired:true, role:"Jet Fighter", speed_mach:0.9, ceiling_m:13000, weapons:[".50 cal MG","20mm"] },
+  { name:"Lockheed P-80", country:"USA", first_flight:1944, retired:true, role:"Jet Fighter", speed_mach:0.92, ceiling_m:12500, weapons:[".50 cal MG"] },
+  { name:"Mikoyan‑Gurevich MiG‑9", country:"Soviet Union", first_flight:1946, retired:true, role:"Early Jet Fighter", speed_mach:0.87, ceiling_m:12000, weapons:["23mm cannons"] },
+
+  // ✈ Korean War Era
+  { name:"Mikoyan‑Gurevich MiG‑15", country:"Soviet Union", first_flight:1947, retired:true, role:"Jet Fighter", speed_mach:0.92, ceiling_m:13000, weapons:["23mm"] },
+  { name:"North American F‑86 Sabre", country:"USA", first_flight:1947, retired:true, role:"Jet Fighter", speed_mach:0.93, ceiling_m:13000, weapons:[".50 cal MG"] },
+  { name:"Dassault Ouragan", country:"France", first_flight:1949, retired:true, role:"Early Jet Fighter", speed_mach:0.88, ceiling_m:13000, weapons:["20mm cannons"] },
+  { name:"Saab J‑29 Tunnan", country:"Sweden", first_flight:1948, retired:true, role:"Jet Fighter", speed_mach:0.97, ceiling_m:15000, weapons:["20mm"] },
+
+  // 🛩 1950s–1960s
+  { name:"Mikoyan‑Gurevich MiG‑17", country:"Soviet Union", first_flight:1950, retired:true, role:"Jet Fighter", speed_mach:0.93, ceiling_m:15000, weapons:["23mm"] },
+  { name:"F‑100 Super Sabre", country:"USA", first_flight:1953, retired:true, role:"Jet Fighter", speed_mach:1.4, ceiling_m:50000, weapons:["AIM","Guns"] },
+  { name:"English Electric Lightning", country:"UK", first_flight:1954, retired:true, role:"Interceptor", speed_mach:2.0, ceiling_m:60000, weapons:["Sidewinder"] },
+  { name:"Dassault Mirage III", country:"France", first_flight:1956, retired:true, role:"Interceptor/Fighter", speed_mach:2.2, ceiling_m:17000, weapons:["Magic II"] },
+
+  // 🛫 Cold War Classics
+  { name:"McDonnell Douglas F‑4 Phantom II", country:"USA", first_flight:1958, retired:true, role:"Interceptor/Fighter‑Bomber", speed_mach:2.23, ceiling_m:18000, weapons:["AIM‑7","AIM‑9"] },
+  { name:"Northrop F‑5 Freedom Fighter", country:"USA", first_flight:1959, retired:false, role:"Light Fighter", speed_mach:1.6, ceiling_m:15000, weapons:["AIM‑9","Guns"] },
+  { name:"Mikoyan MiG‑23", country:"Soviet Union", first_flight:1967, retired:true, role:"Multirole", speed_mach:2.35, ceiling_m:18000, weapons:["R‑23","R‑60"] },
+  { name:"Convair F‑102 Delta Dagger", country:"USA", first_flight:1953, retired:true, role:"Interceptor", speed_mach:1.25, ceiling_m:50000, weapons:["Mighty Mouse"] },
+  { name:"Convair F‑106 Delta Dart", country:"USA", first_flight:1956, retired:true, role:"Interceptor", speed_mach:1.8, ceiling_m:58000, weapons:["AIR‑2 Genie"] },
+
+  // 🪖 1970s–1980s Frontliners
+  { name:"Grumman F‑14 Tomcat", country:"USA", first_flight:1970, retired:true, role:"Air Superiority", speed_mach:2.34, ceiling_m:18000, weapons:["AIM‑54","AIM‑9"] },
+  { name:"Mikoyan MiG‑25 Foxbat", country:"Soviet Union", first_flight:1964, retired:true, role:"Interceptor/Recon", speed_mach:2.83, ceiling_m:22000, weapons:["R‑40"] },
+  { name:"Sukhoi Su‑7", country:"Soviet Union", first_flight:1955, retired:true, role:"Ground Attack/Fighter", speed_mach:1.6, ceiling_m:15000, weapons:["Rockets"] },
+  { name:"Sukhoi Su‑15", country:"Soviet Union", first_flight:1962, retired:true, role:"Interceptor", speed_mach:2.5, ceiling_m:18000, weapons:["R‑60"] },
+  { name:"Sukhoi Su‑17", country:"Soviet Union", first_flight:1966, retired:true, role:"Fighter/Bomber", speed_mach:1.75, ceiling_m:16000, weapons:["Kh‑23","S‑24"] },
+  { name:"Mikoyan MiG‑27", country:"Soviet Union", first_flight:1970, retired:true, role:"Ground Attack/Fighter", speed_mach:1.86, ceiling_m:14000, weapons:["Kh‑23","S‑24"] },
+
+  // 🛫 4th Gen Core
+  { name:"Mikoyan MiG‑29 Fulcrum", country:"Russia", first_flight:1977, retired:false, role:"Air Superiority/Multirole", speed_mach:2.25, ceiling_m:18000, weapons:["R‑27","R‑73"] },
+  { name:"Sukhoi Su‑27 Flanker", country:"Russia", first_flight:1977, retired:false, role:"Air Superiority", speed_mach:2.35, ceiling_m:19000, weapons:["R‑27","R‑73"] },
+  { name:"Shenyang J‑8", country:"China", first_flight:1969, retired:false, role:"Interceptor", speed_mach:2.2, ceiling_m:18000, weapons:["PL‑8","PL‑11"] },
+  { name:"McDonnell Douglas F/A‑18 Hornet", country:"USA", first_flight:1978, retired:false, role:"Multirole", speed_mach:1.8, ceiling_m:15000, weapons:["AIM‑120","AIM‑9"] },
+  { name:"General Dynamics F‑16", country:"USA", first_flight:1974, retired:false, role:"Multirole", speed_mach:2.0, ceiling_m:15000, weapons:["AIM‑120","AIM‑9"] },
+  { name:"McDonnell Douglas F‑15 Eagle", country:"USA", first_flight:1972, retired:false, role:"Air Superiority", speed_mach:2.5, ceiling_m:20000, weapons:["AIM‑120","AIM‑9"] },
+  { name:"Chengdu J‑7", country:"China", first_flight:1966, retired:true, role:"Interceptor", speed_mach:2.0, ceiling_m:17000, weapons:["PL‑2"] },
+  { name:"Mikoyan MiG‑31 Foxhound", country:"Russia", first_flight:1975, retired:false, role:"Interceptor", speed_mach:2.83, ceiling_m:20000, weapons:["R‑33","R‑37"] },
+
+  // 🪩 4.5th / Updated Fighters
+  { name:"Dassault Mirage 2000", country:"France", first_flight:1978, retired:false, role:"Multirole", speed_mach:2.0, ceiling_m:17000, weapons:["MICA","Magic II"] },
+  { name:"Eurofighter Typhoon", country:"EU", first_flight:1994, retired:false, role:"Multirole", speed_mach:2.0, ceiling_m:19000, weapons:["Meteor","IRIS‑T"] },
+  { name:"Dassault Rafale", country:"France", first_flight:1986, retired:false, role:"Multirole", speed_mach:1.8, ceiling_m:15000, weapons:["MICA","Meteor"] },
+  { name:"Saab JAS‑39 Gripen", country:"Sweden", first_flight:1988, retired:false, role:"Multirole", speed_mach:2.0, ceiling_m:15000, weapons:["Meteor","IRIS‑T"] },
+  { name:"Shenyang J‑11", country:"China", first_flight:1990, retired:false, role:"Intercepter", speed_mach:2.0, ceiling_m:18000, weapons:["PL‑10","PL‑12"] },
+  { name:"Sukhoi Su‑30", country:"Russia/Exports", first_flight:1989, retired:false, role:"Multirole", speed_mach:2.0, ceiling_m:17500, weapons:["R‑77","Kh‑31"] },
+  { name:"Mikoyan MiG‑35", country:"Russia", first_flight:2007, retired:false, role:"Multirole", speed_mach:2.25, ceiling_m:18000, weapons:["R‑27","R‑73"] },
+
+  // 🛬 21st Century & 5th Gen
+  { name:"HAL Tejas", country:"India", first_flight:2001, retired:false, role:"Multirole", speed_mach:1.8, ceiling_m:15000, weapons:["Astra","R‑73"] },
+  { name:"JF‑17 Thunder", country:"Pakistan/China", first_flight:2003, retired:false, role:"Multirole", speed_mach:1.6, ceiling_m:15000, weapons:["PL‑12","TY‑90"] },
+  { name:"AIDC F‑CK‑1 Ching‑Kuo", country:"Taiwan", first_flight:1989, retired:false, role:"Multirole", speed_mach:1.8, ceiling_m:15000, weapons:["TC‑1","TC‑2"] },
+  { name:"KAI KF‑21 Boramae", country:"South Korea", first_flight:2022, retired:false, role:"Multirole", speed_mach:1.8, ceiling_m:15000, weapons:["AIM‑120","AIM‑9"] },
+  { name:"Chengdu J‑20", country:"China", first_flight:2011, retired:false, role:"Stealth Multirole", speed_mach:2.0, ceiling_m:20000, weapons:["PL‑15","PL‑10"] },
+  { name:"Su‑57", country:"Russia", first_flight:2010, retired:false, role:"Stealth Multirole", speed_mach:2.0, ceiling_m:20000, weapons:["R‑77","R‑73"] }
+];
